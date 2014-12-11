@@ -16,7 +16,7 @@ import java.sql.*;
 import com.google.gson.Gson;
 
 public class NshareDemon{
-	private static String TAG = "NshareDesktop";
+	private static String TAG = "NshareDemon";
 	private static String rootfolder = System.getProperty("user.dir");
 	private static ArrayList<String> blocklist = new ArrayList<String>();
 	private static int port = 12345; //default-port
@@ -48,7 +48,7 @@ public class NshareDemon{
 				try 
 				{
 					ds = new DatagramSocket(port);
-					System.out.println("Nsniffer is running on port: "+port);
+					System.out.println("NshareDemon is running on port: "+port);
 					while(true)
 					{
 						byte[] buffer = new byte[64];
@@ -112,7 +112,7 @@ public class NshareDemon{
 			BufferedWriter bw = new BufferedWriter(fw);
 			bw.write(gson.toJson(dataQueueTree));
 			bw.close();
-			System.out.println(TAG+": saveDataQueueToFile()->dataQueueTree=="+gson.toJson(dataQueueTree));
+			System.out.println(TAG+": "+gson.toJson(dataQueueTree));
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -140,9 +140,7 @@ public class NshareDemon{
 	private static void SpamFilter(String ip)
 	{
 		
-		
 		// added only 'ip' if not is in 'spamList'
-
 	}
 	
 	private static void luncherBrowser(String url)
@@ -179,7 +177,6 @@ public class NshareDemon{
 		String[] cmd = { "/usr/bin/notify-send", title, text, "-i", icon, "-t", "10000"};
 		try {		
 			Runtime.getRuntime().exec(cmd);
- 
 		}
 		catch (Exception e)
     	{
